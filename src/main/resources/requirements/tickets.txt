@@ -35,9 +35,9 @@ In case the book title doesn't exist in the system, the system will show an erro
 
 BMS-12: As a user I should be able to import CSV files with existing data for authors, books and reviews.
 
-BMS-13: Create system architecture diagram.
+//BMS-13: Create system architecture diagram.
 
-BMS-14: Create database diagram.
+//BMS-14: Create database diagram.
 
 BMS-15: Add Hibernate configuration (pom and utils).
 
