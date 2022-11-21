@@ -44,8 +44,8 @@ public class AuthorServiceImpl implements AuthorService {
             throw new EntityNotFoundException("Author with id: " + authorId + "was not found!");
         }
         Author author = authorOptional.get();
-        author.setFirstname(firstName);
-        author.setLastname(lastName);
+        author.setFirstName(firstName);
+        author.setLastName(lastName);
         authorRepository.update(author);
     }
 

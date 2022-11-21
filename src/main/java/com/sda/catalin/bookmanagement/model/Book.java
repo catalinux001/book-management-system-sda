@@ -1,39 +1,39 @@
 package com.sda.catalin.bookmanagement.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "book")
-
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-private Integer Id;
+    private Integer id;
     @Column(name = "title")
-private String title;
+    private String title;
     @Column(name = "description")
-private String description;
-
+    private String description;
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
 
-    public Book(Integer id, String title, String description) {
-        Id = id;
+    @OneToMany(mappedBy = "book")
+    private List<Review> reviews;
+    public Book() {
+    }
+
+    public Book(String title, String description) {
         this.title = title;
         this.description = description;
     }
 
-    public Book() {
-    }
-
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getTitle() {
@@ -60,10 +60,18 @@ private String description;
         this.author = author;
     }
 
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
-                "Id=" + Id +
+                "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 '}';
