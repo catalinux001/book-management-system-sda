@@ -1,7 +1,6 @@
 package com.sda.catalin.bookmanagement.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "author")
@@ -18,7 +17,7 @@ public class Author {
 
 
 
-//    @OneToMany(mappedBy = "author")
+    //    @OneToMany(mappedBy = "author")
 //    private List<Book> books;
     public Author(Integer id, String firstname, String lastname) {
         this.id = id;
@@ -27,6 +26,9 @@ public class Author {
     }
 
     public Author() {
+    }
+
+    public Author(String firstName, String lastName) {
     }
 
     public Integer getId() {
