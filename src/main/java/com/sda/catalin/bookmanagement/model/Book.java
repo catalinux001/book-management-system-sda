@@ -14,18 +14,21 @@ public class Book {
     private String title;
     @Column(name = "description")
     private String description;
+
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
 
     @OneToMany(mappedBy = "book")
     private List<Review> reviews;
-    public Book() {
-    }
 
     public Book(String title, String description) {
         this.title = title;
         this.description = description;
+    }
+
+    public Book() {
+
     }
 
     public Integer getId() {
@@ -52,21 +55,18 @@ public class Book {
         this.description = description;
     }
 
-    public Author getAuthor() {
-        return author;
+    public Author getAuthor() {return author;}
+
+    public void setAuthor(Author author) {this.author = author;}
+
+    public List<Review> getReviews() {return reviews;}
+
+    public void setReviews(List<Review> reviews) {this.reviews = reviews;}
+
+    public void setAuthor(String title) {
+        this.title = title;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
-    public List<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
-    }
 
     @Override
     public String toString() {

@@ -17,35 +17,34 @@ public class BookController {
 
     public void createBook() {
         try {
-            System.out.println("Please insert a title: ");
+            System.out.println("Please insert a title!");
             String title = scanner.nextLine();
-            System.out.println("Please insert a description: ");
+            System.out.println("Please insert a description!");
             String description = scanner.nextLine();
-            System.out.println("Please insert an author id: ");
+            System.out.println("Please insert an author id");
             int authorId = Integer.parseInt(scanner.nextLine());
 
             bookService.createBook(title, description, authorId);
-            System.out.println("Book was created!");
-        } catch (InvalidParameterException e) {
-            System.out.println(e.getMessage());
+            System.out.printf("Book was created!");
         } catch (EntityNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (NumberFormatException e) {
-            System.out.println("Please insert a numeric value for author id!");
-        } catch (Exception e) {
-            System.out.println("Internal system error!");
+            System.out.println("Please insert a valid numeric value for author id!");
+        } catch (InvalidParameterException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e){
+            System.out.println("Internal server error!");
         }
-    }
 
+    }
     public void showAllBooks() {
-        bookService.getAllBooks().stream()
-                .forEach(book ->
-                        System.out.println(
-                                "Book id: " + book.getId()
-                                        + " title " + book.getTitle()
-                                        + " author " + book.getAuthor().getFirstName()
-                                        + " " + book.getAuthor().getLastName()
-                        )
-                );
+        bookService.getAllBooks().stream().forEach(book ->
+                System.out.println(
+                        "Book id: " + book.getId()
+                                + " title " + book.getTitle()
+                                + " author " + book.getAuthor().getFirstName()
+                                + " " + book.getAuthor().getLastName()
+                )
+        );
     }
 }
